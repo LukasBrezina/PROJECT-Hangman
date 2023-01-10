@@ -3,7 +3,7 @@ package at.ac.fhcampuswien;
 import java.util.Scanner;
 
 public class MultiOrSingle {
-    public static String Gamemode() {
+    public static String gamemode() {
         System.out.println();
         System.out.println();
         System.out.println();
@@ -35,11 +35,12 @@ public class MultiOrSingle {
             Player p2 = new Player(p2Name);
             System.out.println("(☞ﾟヮﾟ)☞ " + p1.getName() + " enter a word for " +p2.getName()+ " to guess."); // Zweite Eingabe funktioniert noch nicht
             String word = scanner.next();
-            for(int i = 0; i<20;i++) {
+            /* for(int i = 0; i<20;i++) {
                 System.out.println();
-            }
+            }                               dieser Code wird später noch für eine Erweiterung des Zwei-Spieler Models hinzugefügt
+
             System.out.println("(☞ﾟヮﾟ)☞ and now ... " + p2.getName() + " enter a word for " + p1.getName() + " to guess.");
-            String word2 = scanner.next();
+            String word2 = scanner.next(); */
             return word.toLowerCase();
         } else { //  SINGLEPLAYER
             System.out.println("Only P1 was selected...");
@@ -47,7 +48,7 @@ public class MultiOrSingle {
             System.out.println("...");
             System.out.println("Game is starting...");
             System.out.println("A random word was generated...");
-            String word = wordlist.randomWord();
+            String word = WordList.randomWord();
             return word;
         }
     }

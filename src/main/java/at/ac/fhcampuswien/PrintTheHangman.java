@@ -1,6 +1,6 @@
 package at.ac.fhcampuswien;
 
-public class printHangman {
+public class PrintTheHangman {
     public static void printHangedMan(int wrongCount) {
 
         switch (wrongCount) {

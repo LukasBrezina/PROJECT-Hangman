@@ -2,7 +2,7 @@ package at.ac.fhcampuswien;
 
 import java.util.Scanner;
 
-public class playTheGame {
+public class PlayTheGame {
     public static void playHangMan(String word) {
         char[] letters = word.toCharArray();
         char[] game = new char[letters.length];
@@ -43,7 +43,7 @@ public class playTheGame {
             char input = scanner.next().charAt(0); // EINGABENABFRAGE
 
             // Überprüft ob Char schon mal eingegeben wurde
-            while (!alreadyUsedLetters.alreadyUsed(usedLetters, input)) {
+            while (!AlreadyUsedLetters.alreadyUsed(usedLetters, input)) {
                 System.out.println("You already used this char... please enter another one.");
                 input = scanner.next().charAt(0);
             }
@@ -59,7 +59,7 @@ public class playTheGame {
                     numberForFail++;
                     if (numberForFail == letters.length) {
                         System.out.println("The char " + input + " isn't part of the word. Fail: " + fails);
-                        printHangman.printHangedMan(fails);
+                        PrintTheHangman.printHangedMan(fails);
                         fails++;
                     }
                 }
