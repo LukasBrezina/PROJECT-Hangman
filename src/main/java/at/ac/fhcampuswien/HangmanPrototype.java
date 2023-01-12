@@ -12,7 +12,7 @@ public class HangmanPrototype {
             PlayTheGame.playHangmanMulti(multi_words, first_player_name, second_player_name);
         } else if (gamemode_number == 1) {
             String word = MultiOrSingle.Singleplayer();
-            PlayTheGame.playHangmanSolo(word, gamemode_number, 0);
+            PlayTheGame.playHangmanSolo(word, gamemode_number);
         }
         }
     }

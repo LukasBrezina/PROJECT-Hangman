@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class MultiOrSingle {
     public static Integer Gamemode() {
+        // this methode asks for the gamemode, meaning 2 is multiplayer and 1 is singleplayer
         System.out.println();
         System.out.println();
         System.out.println();
@@ -27,6 +28,7 @@ public class MultiOrSingle {
 
     public static String Singleplayer() {
         //  SINGLEPLAYER
+        // if the gamemode input is 1, this method is called
         System.out.println("Only P1 was selected...");
         System.out.println("...");
         System.out.println("...");
@@ -38,6 +40,7 @@ public class MultiOrSingle {
 
     public static String[] Multiplayer() {
          // MULTIPLAYER
+        // if the gamemode input is 2, this method is called
         String[] multi_words = new String[4];
         Scanner scanner = new Scanner(System.in);
         System.out.println("P1 & P2 was selected...");

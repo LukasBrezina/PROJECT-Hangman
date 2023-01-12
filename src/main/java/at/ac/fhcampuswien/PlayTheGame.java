@@ -3,33 +3,39 @@ package at.ac.fhcampuswien;
 import java.util.Scanner;
 
 public class PlayTheGame {
-    public static Integer playHangmanSolo(String word, int mode, int number_of_fails) {
+    public static Integer playHangmanSolo(String word, int mode) {
         char[] letters = word.toCharArray();
         char[] game = new char[letters.length];
-        int lettercharlenght = 50; // length für usedLetters char
+        // length for usedLetters char
+        int lettercharlenght = 50;
 
-        // Char Array für bereits verwendete Char's
+        // this char array is filled up with the chars which where already used
         char[] usedLetters = new char[lettercharlenght];
         for (int fillChar = 0; fillChar< lettercharlenght; fillChar++){
                 usedLetters[fillChar] = ' ';
         }
 
 
-        // char mit "_" befüllen
+        // filling the empty char, which is the same length as the word given,
+        // with "_" chars
         for (int i = 0; i< letters.length; i++) {
             game[i] = '_';
         }
         Scanner scanner = new Scanner(System.in);
-        int numberinArray = 0; // Array mit bereits verwendeten Char's
-        int fails = 1; // Anzahl an Fehlern
+        // array with already used chars
+        int numberinArray = 0;
+        // number of fails = wrong guesses
+        int fails = 0;
         int numberForFail = 0;
-        Interface.buildInterface(); // INTERFACE WIRD GEPRINTET
+        // print of the inferface
+        Interface.buildInterface();
         System.out.println("The word has " + letters.length + " letters.");
         System.out.println("The game is only played in lower case letters!");
 
-        // SCHLEIFE DER VERSUCHE
+        // loop for the number of trys you have
         for (int trys = 1; trys < 13; trys++) {
-            boolean equals = Comparison.AreTheSame(game,letters); // VERGLEICH OB WORT = ARRAY
+            // comparison of char array and word, if they are the same -> you won the game
+            boolean equals = Comparison.AreTheSame(game,letters);
             if (equals) {
                 System.out.println("The word is: " + word);
                 System.out.println("YOU WIN - CONGRATULATIONS! You saved him!");
@@ -44,17 +50,26 @@ public class PlayTheGame {
             System.out.print("Used Letters: " );
             System.out.println(usedLetters);
             System.out.println(game);
-            char input = scanner.next().charAt(0); // EINGABENABFRAGE
 
-            // Überprüft ob Char schon mal eingegeben wurde
+            // In these lines the scanner asks for an char input, which is then
+            // with the help of a string & char array converted to lowercase
+            char input = scanner.next().charAt(0);
+            String inputString = String.valueOf(input).toLowerCase();
+            char[] help_for_lower_case = inputString.toCharArray();
+            input = help_for_lower_case[0];
+
+            // checks if an char was already used and if yes, it asks for another input
             while (!AlreadyUsedLetters.alreadyUsed(usedLetters, input)) {
                 System.out.println("You already used this char... please enter another one.");
                 input = scanner.next().charAt(0);
             }
 
+            // only every second index of the array is filled up with the input
+            // due to formatting reasons
             usedLetters[numberinArray*2] = input;
 
-            // Schleife Überprüfung ob char in Wort enthalten
+            // loop that checks if an char input occurs in the word given, either random generated
+            // or chosen by your opponent
             for (int j = 0; j<letters.length;j++) {
                 if (letters[j] == input) {
                     game[j] = input;
@@ -62,13 +77,14 @@ public class PlayTheGame {
                 } else {
                     numberForFail++;
                     if (numberForFail == letters.length) {
+                        fails++;
                         System.out.println("The char " + input + " isn't part of the word. Fail: " + fails);
                         PrintTheHangman.printHangedMan(fails);
-                        fails++;
                     }
                 }
             }
-            // VERLOREN, der HANGMAN hängt
+            // these lines happen when your try counter reaches 12, which means
+            // that the hangman is completely build up -> you lost
             if (trys == 12) {
                 System.out.println("Damn you lost... don't cry loser ... the word is: " + word);
                 System.out.println("{{{(>_<)}}}");
@@ -76,20 +92,20 @@ public class PlayTheGame {
             numberForFail = 0;
             numberinArray++;
         }
-        number_of_fails = fails;
-        return number_of_fails;
+        return fails;
     }
 
     public static void playHangmanMulti(String[] multi_words, String p1Name, String p2Name) {
+
+        // game call when the gamemode is selected as "2" meaning multiplayer mode
+        // the player with less fails wins the game
         String first_word = multi_words[0];
         String second_word = multi_words[1];
-        int first_player_fails = 0;
-        int second_player_fails = 0;
-        first_player_fails = playHangmanSolo(first_word, 2, first_player_fails);
-        second_player_fails = playHangmanSolo(second_word, 2, second_player_fails);
+        int first_player_fails = playHangmanSolo(first_word, 2);
+        int second_player_fails = playHangmanSolo(second_word, 2);
         if (first_player_fails > second_player_fails) {
             System.out.println(p2Name + " you have less fails than " + p1Name + " so you won the game, CONGRATULATIONS!");
-        } else if (second_player_fails == first_player_fails) {
+        } else if (second_player_fails > first_player_fails) {
             System.out.println(p1Name + " you have less fails than " + p2Name + " so you won the game, CONGRATULATIONS!");
         } else {
             System.out.println("Its a draw! You both have the same number of fails!");
