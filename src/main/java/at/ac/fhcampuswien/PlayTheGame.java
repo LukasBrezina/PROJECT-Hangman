@@ -3,7 +3,7 @@ package at.ac.fhcampuswien;
 import java.util.Scanner;
 
 public class PlayTheGame {
-    public static void playHangMan(String word) {
+    public static Integer playHangmanSolo(String word, int mode, int number_of_fails) {
         char[] letters = word.toCharArray();
         char[] game = new char[letters.length];
         int lettercharlenght = 50; // length für usedLetters char
@@ -33,6 +33,10 @@ public class PlayTheGame {
             if (equals) {
                 System.out.println("The word is: " + word);
                 System.out.println("YOU WIN - CONGRATULATIONS! You saved him!");
+                if (mode == 2) {
+                    System.out.println("This is your number of fails: " + fails);
+                    System.out.println("The Player with less fails wins the game!");
+                }
                 System.out.println("( ﾉ ﾟｰﾟ)ﾉ");
                 break;}
             System.out.println();
@@ -72,5 +76,24 @@ public class PlayTheGame {
             numberForFail = 0;
             numberinArray++;
         }
+        number_of_fails = fails;
+        return number_of_fails;
+    }
+
+    public static void playHangmanMulti(String[] multi_words, String p1Name, String p2Name) {
+        String first_word = multi_words[0];
+        String second_word = multi_words[1];
+        int first_player_fails = 0;
+        int second_player_fails = 0;
+        first_player_fails = playHangmanSolo(first_word, 2, first_player_fails);
+        second_player_fails = playHangmanSolo(second_word, 2, second_player_fails);
+        if (first_player_fails > second_player_fails) {
+            System.out.println(p2Name + " you have less fails than " + p1Name + " so you won the game, CONGRATULATIONS!");
+        } else if (second_player_fails == first_player_fails) {
+            System.out.println(p1Name + " you have less fails than " + p2Name + " so you won the game, CONGRATULATIONS!");
+        } else {
+            System.out.println("Its a draw! You both have the same number of fails!");
+        }
+
     }
 }
