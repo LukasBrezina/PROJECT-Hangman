@@ -2,6 +2,9 @@ package at.ac.fhcampuswien;
 import java.util.Scanner;
 
 public class Player {
+    // this is a basic player class to set the names of the players
+    // in case mode 2 was chosen = multiplayer mode
+    // the method returns the first or second player name
 
     private String name;
 

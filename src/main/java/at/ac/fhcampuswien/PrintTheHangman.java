@@ -1,7 +1,7 @@
 package at.ac.fhcampuswien;
 
 public class PrintTheHangman {
-    public static void printHangedMan(int wrongCount) {
+    public static void printHangman(int wrongCount) {
 
         switch (wrongCount) {
             case 1:

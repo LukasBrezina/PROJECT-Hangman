@@ -3,7 +3,7 @@ package at.ac.fhcampuswien;
 import java.util.Scanner;
 
 public class MultiOrSingle {
-    public static Integer Gamemode() {
+    public static Integer gamemode() {
         // this methode asks for the gamemode, meaning 2 is multiplayer and 1 is singleplayer
         System.out.println();
         System.out.println();
@@ -26,7 +26,7 @@ public class MultiOrSingle {
         return mode;
         }
 
-    public static String Singleplayer() {
+    public static String singleplayer() {
         //  SINGLEPLAYER
         // if the gamemode input is 1, this method is called
         System.out.println("Only P1 was selected...");
@@ -34,14 +34,14 @@ public class MultiOrSingle {
         System.out.println("...");
         System.out.println("Game is starting...");
         System.out.println("A random word was generated...");
-        String word = WordList.randomWord();
+        String word = Implementations.randomWord();
         return word;
     }
 
-    public static String[] Multiplayer() {
+    public static String[] multiplayer() {
          // MULTIPLAYER
         // if the gamemode input is 2, this method is called
-        String[] multi_words = new String[4];
+        String[] word_array = new String[4];
         Scanner scanner = new Scanner(System.in);
         System.out.println("P1 & P2 was selected...");
         System.out.println("...");
@@ -49,20 +49,20 @@ public class MultiOrSingle {
         System.out.println("Game is starting...");
         System.out.println("P1 enter your name: ");
         String p1Name = Player.first_player_name();
-        multi_words[2] = p1Name;
+        word_array[2] = p1Name;
         System.out.println("P2 enter your name: ");
         String p2Name= Player.second_player_name();
-        multi_words[3] = p2Name;
+        word_array[3] = p2Name;
         System.out.println("(☞ﾟヮﾟ)☞ " + p1Name + " enter a word for " +p2Name+ " to guess.");
         String word = scanner.next();
-        multi_words[0] = word.toLowerCase();
+        word_array[0] = word.toLowerCase();
         for(int i = 0; i<20;i++) {
                System.out.println();
            }
         System.out.println("(☞ﾟヮﾟ)☞ and now ... " + p2Name + " enter a word for " + p1Name + " to guess.");
         String word2 = scanner.next();
-        multi_words[1] = word2.toLowerCase();
-        return multi_words;
+        word_array[1] = word2.toLowerCase();
+        return word_array;
     }
 
 

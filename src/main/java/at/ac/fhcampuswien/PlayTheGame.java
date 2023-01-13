@@ -5,37 +5,41 @@ import java.util.Scanner;
 public class PlayTheGame {
     public static Integer playHangmanSolo(String word, int mode) {
         char[] letters = word.toCharArray();
-        char[] game = new char[letters.length];
-        // length for usedLetters char
-        int lettercharlenght = 50;
+        char[] guess_array = new char[letters.length];
+        // length for used_letters char
+        int used_letters_length = 50;
 
         // this char array is filled up with the chars which where already used
-        char[] usedLetters = new char[lettercharlenght];
-        for (int fillChar = 0; fillChar< lettercharlenght; fillChar++){
-                usedLetters[fillChar] = ' ';
+        char[] used_letters = new char[used_letters_length];
+        for (int i = 0; i< used_letters_length; i++){
+                used_letters[i] = ' ';
         }
 
 
         // filling the empty char, which is the same length as the word given,
         // with "_" chars
         for (int i = 0; i< letters.length; i++) {
-            game[i] = '_';
+            guess_array[i] = '_';
         }
         Scanner scanner = new Scanner(System.in);
-        // array with already used chars
-        int numberinArray = 0;
+        // index of used letters char, only every second index is used
+        // at the bottom this count is set +1
+        int index_of_used_letters_char = 0;
         // number of fails = wrong guesses
         int fails = 0;
-        int numberForFail = 0;
+        // count for fails, if this count is the same number of
+        // the given word length, the fails counter is set +1
+        int count_for_a_fail = 0;
         // print of the inferface
-        Interface.buildInterface();
+        Implementations.buildInterface();
         System.out.println("The word has " + letters.length + " letters.");
-        System.out.println("The game is only played in lower case letters!");
+        System.out.println("The game only counts the first letter entered!");
+        System.out.println("For example: if you write 'pd' only 'p' is counted");
 
         // loop for the number of trys you have
         for (int trys = 1; trys < 13; trys++) {
-            // comparison of char array and word, if they are the same -> you won the game
-            boolean equals = Comparison.AreTheSame(game,letters);
+            // comparison of char array and word, if they are the same -> you won the guess_array
+            boolean equals = Implementations.wordArrayAreTheSame(guess_array,letters);
             if (equals) {
                 System.out.println("The word is: " + word);
                 System.out.println("YOU WIN - CONGRATULATIONS! You saved him!");
@@ -48,8 +52,8 @@ public class PlayTheGame {
             System.out.println();
             System.out.println("Please enter a char: ");
             System.out.print("Used Letters: " );
-            System.out.println(usedLetters);
-            System.out.println(game);
+            System.out.println(used_letters);
+            System.out.println(guess_array);
 
             // In these lines the scanner asks for an char input, which is then
             // with the help of a string & char array converted to lowercase
@@ -59,27 +63,27 @@ public class PlayTheGame {
             input = help_for_lower_case[0];
 
             // checks if an char was already used and if yes, it asks for another input
-            while (!AlreadyUsedLetters.alreadyUsed(usedLetters, input)) {
+            while (!Implementations.alreadyUsedLetters(used_letters, input)) {
                 System.out.println("You already used this char... please enter another one.");
                 input = scanner.next().charAt(0);
             }
 
             // only every second index of the array is filled up with the input
             // due to formatting reasons
-            usedLetters[numberinArray*2] = input;
+            used_letters[index_of_used_letters_char*2] = input;
 
             // loop that checks if an char input occurs in the word given, either random generated
             // or chosen by your opponent
             for (int j = 0; j<letters.length;j++) {
                 if (letters[j] == input) {
-                    game[j] = input;
+                    guess_array[j] = input;
                     trys--;
                 } else {
-                    numberForFail++;
-                    if (numberForFail == letters.length) {
+                    count_for_a_fail++;
+                    if (count_for_a_fail == letters.length) {
                         fails++;
                         System.out.println("The char " + input + " isn't part of the word. Fail: " + fails);
-                        PrintTheHangman.printHangedMan(fails);
+                        PrintTheHangman.printHangman(fails);
                     }
                 }
             }
@@ -89,9 +93,11 @@ public class PlayTheGame {
                 System.out.println("Damn you lost... don't cry loser ... the word is: " + word);
                 System.out.println("{{{(>_<)}}}");
             }
-            numberForFail = 0;
-            numberinArray++;
+            count_for_a_fail = 0;
+            index_of_used_letters_char++;
         }
+        // this method returns the fails count, so playing multiplayer
+        // is more competitive
         return fails;
     }
 
