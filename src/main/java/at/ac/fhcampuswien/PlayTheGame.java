@@ -62,7 +62,7 @@ public class PlayTheGame {
             char[] help_for_lower_case = inputString.toCharArray();
             input = help_for_lower_case[0];
 
-            // checks if an char was already used and if yes, it asks for another input
+            // checks if a char was already used and if yes, it asks for another input
             while (!Implementations.alreadyUsedLetters(used_letters, input)) {
                 System.out.println("You already used this char... please enter another one.");
                 input = scanner.next().charAt(0);
@@ -72,7 +72,7 @@ public class PlayTheGame {
             // due to formatting reasons
             used_letters[index_of_used_letters_char*2] = input;
 
-            // loop that checks if an char input occurs in the word given, either random generated
+            // loop that checks if a char input occurs in the word given, either random generated
             // or chosen by your opponent
             for (int j = 0; j<letters.length;j++) {
                 if (letters[j] == input) {
