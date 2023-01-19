@@ -73,4 +73,12 @@ public class Implementations {
         return result;
     }
 
+    // this method transforms an input to lower case, if it is upper case
+    // this method is reused
+    public static Character inputToLowerCase(char input) {
+        String inputString = String.valueOf(input).toLowerCase();
+        char[] help_for_lower_case = inputString.toCharArray();
+        input = help_for_lower_case[0];
+        return input;
+    }
 }

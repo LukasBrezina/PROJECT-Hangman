@@ -58,23 +58,17 @@ public class PlayTheGame {
             // In these lines the scanner asks for an char input, which is then
             // with the help of a string & char array converted to lowercase
             char input = scanner.next().charAt(0);
-            String inputString = String.valueOf(input).toLowerCase();
-            char[] help_for_lower_case = inputString.toCharArray();
-            input = help_for_lower_case[0];
+            input = Implementations.inputToLowerCase(input);
             while (!Implementations.checkValidInput(input)) {
                 System.out.println("This input is invalid... please enter another one.");
                 input = scanner.next().charAt(0);
-                inputString = String.valueOf(input).toLowerCase();
-                help_for_lower_case = inputString.toCharArray();
-                input = help_for_lower_case[0];
+                input = Implementations.inputToLowerCase(input);
             }
             // checks if a char was already used and if yes, it asks for another input
             while (!Implementations.alreadyUsedLetters(used_letters, input)) {
                 System.out.println("You already used this char... please enter another one.");
                 input = scanner.next().charAt(0);
-                inputString = String.valueOf(input).toLowerCase();
-                help_for_lower_case = inputString.toCharArray();
-                input = help_for_lower_case[0];
+                input = Implementations.inputToLowerCase(input);
             }
 
             // only every second index of the array is filled up with the input
