@@ -1,16 +1,18 @@
 package at.ac.fhcampuswien;
 
-import java.util.Random;
+import java.util.*;
 
 public class Implementations {
 
     // algorithm that checks if a letter was already used
     public static boolean alreadyUsedLetters(char[] usedLetters, char input) {
         boolean answer = true;
-        for (int i = 0; i < usedLetters.length; i++) {
-            if (usedLetters[i] == input) {
-                answer = false;
-            }
+        List<Character> list = new ArrayList<>();
+        for (char check : usedLetters) {
+            list.add(check);
+        }
+        if (list.contains(input)) {
+            answer = false;
         }
         return answer;
     }
@@ -54,4 +56,21 @@ public class Implementations {
         System.out.println("           |_______________________|");
         System.out.println();
     }
+
+    // this method checks if the input given is a valid input or not
+    public static boolean checkValidInput(char input) {
+        boolean result = false;
+        List<Character> valid_inputs = new ArrayList<>();
+        char[] add_valid_inputs = {'a', 'b','c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
+                'm', 'n', 'o', 'p','q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+        for (char character : add_valid_inputs) {
+            valid_inputs.add(character);
+        }
+
+        if (valid_inputs.contains(input)) {
+            result = true;
+        }
+        return result;
+    }
+
 }

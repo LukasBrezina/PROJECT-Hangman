@@ -61,11 +61,20 @@ public class PlayTheGame {
             String inputString = String.valueOf(input).toLowerCase();
             char[] help_for_lower_case = inputString.toCharArray();
             input = help_for_lower_case[0];
-
+            while (!Implementations.checkValidInput(input)) {
+                System.out.println("This input is invalid... please enter another one.");
+                input = scanner.next().charAt(0);
+                inputString = String.valueOf(input).toLowerCase();
+                help_for_lower_case = inputString.toCharArray();
+                input = help_for_lower_case[0];
+            }
             // checks if a char was already used and if yes, it asks for another input
             while (!Implementations.alreadyUsedLetters(used_letters, input)) {
                 System.out.println("You already used this char... please enter another one.");
                 input = scanner.next().charAt(0);
+                inputString = String.valueOf(input).toLowerCase();
+                help_for_lower_case = inputString.toCharArray();
+                input = help_for_lower_case[0];
             }
 
             // only every second index of the array is filled up with the input
