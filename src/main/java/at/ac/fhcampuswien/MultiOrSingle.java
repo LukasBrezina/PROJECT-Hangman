@@ -3,7 +3,7 @@ package at.ac.fhcampuswien;
 import java.util.Scanner;
 
 public class MultiOrSingle {
-    public static Integer gamemode() {
+    public static Character gamemode() {
         // this methode asks for the gamemode, meaning 2 is multiplayer and 1 is singleplayer
         System.out.println();
         System.out.println();
@@ -16,12 +16,12 @@ public class MultiOrSingle {
         System.out.println("|___________|");
         Scanner scanner = new Scanner(System.in);
         System.out.println("If you want to play with two players please enter '2', otherwise enter '1'.");
-        int mode = scanner.nextInt();
+        char mode = scanner.next().charAt(0);
 
-        while (mode !=1 && mode !=2) {
+        while (mode !='1' && mode !='2') {
             System.out.println("Your entry is invalid.");
             System.out.println("If you want to play with two players please enter '2', otherwise enter '1'.");
-            mode = scanner.nextInt();
+            mode = scanner.next().charAt(0);
             }
         return mode;
         }
