@@ -37,7 +37,8 @@ public class PlayTheGame {
         System.out.println("For example: if you write 'pd' only 'p' is counted");
 
         // loop for the number of trys you have
-        for (int trys = 1; trys < 13; trys++) {
+        int max_trys = 13;
+        for (int trys = 1; trys < max_trys; trys++) {
             // comparison of char array and word, if they are the same -> you won the guess_array
             boolean equals = Implementations.wordArrayAreTheSame(guess_array,letters);
             if (equals) {
@@ -79,6 +80,7 @@ public class PlayTheGame {
             // or chosen by your opponent
             for (int j = 0; j<letters.length;j++) {
                 if (letters[j] == input) {
+                    System.out.println("The char " + input + " is part of the word!");
                     guess_array[j] = input;
                     trys--;
                 } else {

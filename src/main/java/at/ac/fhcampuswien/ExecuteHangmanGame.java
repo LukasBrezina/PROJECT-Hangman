@@ -1,7 +1,7 @@
 package at.ac.fhcampuswien;
 
 
-public class HangmanPrototype {
+public class ExecuteHangmanGame {
 
     public static void main(String[] args) {
         char gamemode_number = MultiOrSingle.gamemode();
