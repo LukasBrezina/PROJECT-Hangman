@@ -31,7 +31,18 @@ public class Implementations {
     // algorithm to choose a random word in case if mode is set 1 = singleplayer
     public static String randomWord() {
         String[] random = {"doctor", "professor", "detective", "confidence", "ability", "black", "book", "poker", "lukas", "mohamed",
-                "amir", "billy", "campus", "return", "whiteberries", "naruto", "java", "scanner", "ibrahimovic", "ronaldo", "messi"};
+                "amir", "billy", "campus", "return", "whiteberries", "naruto", "java", "scanner", "ibrahimovic", "ronaldo", "messi",
+                "xylophone", "xenon", "wreck", "wristwatch", "world", "wonder", "wolf", "window", "windmill", "wind", "wild", "whistle",
+                "whisker", "whale", "waterfall", "wasp", "wallet", "wait", "waffle", "vulture", "voice", "violin", "video", "vegetable",
+                "vegetarian", "variable", "vacuum", "vacation", "utopia", "uterus", "user", "urge", "upstairs", "umpire", "umbrella", "ultra",
+                "twilight", "twist", "twig", "tuxedo", "tusk", "turquoise", "turkey", "turnip", "turbo", "tunnel", "tugboat", "tuba", "truffle",
+                "trumpet", "truck", "troubleshoot", "trousers", "trout", "trip", "tricycle", "tree", "treasure", "trash", "train", "trail", "track",
+                "tractor", "tornado", "tool", "toothbrush", "tooth", "ton", "tomato", "tofu", "toe", "toast", "tissue", "tiger", "tie", "thyme", "thump",
+                "thunderstorm", "thunder", "throw", "throat", "thrill", "thread", "threat", "thief", "theory", "textbook", "test", "television", "tease",
+                "teacher", "tea", "taxi", "tax", "taste", "tart", "target", "tap", "tangerine", "tandem", "talent", "tale", "tail", "table", "tabby", "system",
+                "syrup", "symbol", "swim", "swan", "swamp", "swallow", "suspect", "survey", "surround", "surprise", "surface", "supply", "support", "supporter",
+                "supermarket", "superhero", "sunrise", "sunflower", "sunglasses", "sunday", "summer", "sugar", "suggest"};
+        
         int arrayLenght = random.length;
         Random randomNumb = new Random();
         int arrayNumber = randomNumb.nextInt(arrayLenght-1);
