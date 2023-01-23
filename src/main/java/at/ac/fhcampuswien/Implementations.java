@@ -41,7 +41,7 @@ public class Implementations {
                 "thunderstorm", "thunder", "throw", "throat", "thrill", "thread", "threat", "thief", "theory", "textbook", "test", "television", "tease",
                 "teacher", "tea", "taxi", "tax", "taste", "tart", "target", "tap", "tangerine", "tandem", "talent", "tale", "tail", "table", "tabby", "system",
                 "syrup", "symbol", "swim", "swan", "swamp", "swallow", "suspect", "survey", "surround", "surprise", "surface", "supply", "support", "supporter",
-                "supermarket", "superhero", "sunrise", "sunflower", "sunglasses", "sunday", "summer", "sugar", "suggest" ,"block"};
+                "supermarket", "superhero", "sunrise", "sunflower", "sunglasses", "sunday", "summer", "sugar", "suggest" ,"block", "apple"};
         
         int arrayLenght = random.length;
         Random randomNumb = new Random();
