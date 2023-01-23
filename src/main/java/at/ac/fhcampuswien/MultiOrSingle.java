@@ -56,7 +56,7 @@ public class MultiOrSingle {
         System.out.println("(☞ﾟヮﾟ)☞ " + p1Name + " enter a word for " +p2Name+ " to guess.");
         String word = scanner.next();
         word_array[0] = word.toLowerCase();
-        for(int i = 0; i<20;i++) {
+        for(int i = 0; i<80;i++) {
                System.out.println();
            }
         System.out.println("(☞ﾟヮﾟ)☞ and now ... " + p2Name + " enter a word for " + p1Name + " to guess.");
